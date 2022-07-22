@@ -1,0 +1,86 @@
+
+{% extends 'base.html' %}
+{%block content%}
+{%load static%}
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">Contact us below</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+<section>
+      <div class="lightBg">
+        <div class="container">
+          {% for message in messages%}
+              <h4>{{message}}</h4>
+              <style>
+                h4{
+                  color : red;
+                }
+              </style>
+          {%endfor%}
+            <form id="contactForm" action="{{'/setting_blog/'}}" method='POST'>
+              {%csrf_token%}
+              <h3>add new blog</h3>
+
+                <label for="profile_pic">titre</label>
+                <input type="text" id="name" name="titre_blog" !important><br>
+                <label for="profile_pic">date</label>
+                <input type="date" id="name" name="date_blog" !important><br>
+                <label for="desciptions">description</label>
+                <input type="text" id="name" name="desc" !important><br>
+                <label for="desciptions">Site</label>
+                <input type="text" id="name" name="site" !important><br>
+                <input class='btn btnPrimary' type="submit" value="Submit">
+
+            </form>
+            <br>
+            {% for message in messages%}
+              <h4>{{message}}</h4>
+              <style>
+                h4{
+                  color : red;
+                }
+              </style>
+            {%endfor%}
+            <form id="contactForm" action="{{'/setting_work/'}}" method='POST'>
+              {%csrf_token%}
+              <h3>add new portfolio</h3>
+                <label for="profile_pic">titre</label>
+                <input type="text" id="name" name="titre_work" !important><br>
+
+                <label for="work_pic">pic</label>
+                <input type="file" id="name" name="work_pic" !important><br>
+
+                <label for="desciptions" !important>description</label>
+                <input type="text" id="name" name="description_certificate" !important> <br>
+                
+                <label for="profile_pic">date</label>
+                <input type="text" id="name" name="date_work" placeholder="year" !important><br>
+                
+
+                
+                <br>
+                <input class='btn btnPrimary' type="submit" value="Submit">
+            
+            </form>
+            
+        </div>
+      </div>
+</section>
+    <!-- ================================
+    End Content
+    ================================= -->
+
+
+  </body>
+</html>
+{% endblock %}

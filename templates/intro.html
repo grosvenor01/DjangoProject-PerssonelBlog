@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+{%block content%}
+{%load static%}
+<section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">Contact us below</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+<section>
+      <div class="lightBg">
+        <div class="container">
+          {% for message in messages%}
+              <h4>{{message}}</h4>
+              <style>
+                h4{
+                  color : red;
+                }
+              </style>
+          {%endfor%}
+            <form id="contactForm" action="{{'/intro/'}}" method='POST'>
+              {%csrf_token%}
+              <h3>add new blog</h3>
+
+                <label for="profile_pic">picture</label><br>
+                <br>
+                <input type="file" id="name" name="prfile_pic" !important><br>
+                <br>
+                <label for="desciptions">description</label><br>
+                <br>
+                <textarea id="name" name="description" !important></textarea><br>
+                <br>
+                <input class='btn btnPrimary' type="submit" value="Submit">
+
+            </form>
+            <br>
+        </div>
+      </div>
+</section>
+    <!-- ================================
+    End Content
+    ================================= -->
+
+
+  </body>
+</html>
+{% endblock %}

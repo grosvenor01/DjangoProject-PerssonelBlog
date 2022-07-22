@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{%block content %}
+{% load static %}
+
+    <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="bannerSection">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-auto order-md-last">
+              <div class="bannerUserImg">
+                <img src="{{ profile.profile_pic.url }}" alt="...">
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-3">I’m {{ profile }}, <br> a back-end Developer</h1>
+                <p> {{profile.description_profile}} </p>
+                <div class="bannerBtnCol">
+                  <div class="row">
+                    <div class="col-auto">
+                      <a download href="javascript:void(0)" class="btn btnPrimary">Download Resume</a>
+                    </div>
+                    <div class="col-auto">
+                      <a href="{{'/setting/'}}" class="btn btnOutline"> Add some blog and portfolio</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpace pt-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-auto">
+              <div class="keySkillCol">
+                <h4 class="smTitle pb-3">Key Skills</h4>
+                {% for s in skille %}
+                <div class="keySkillCard">
+                  <div class="ksIconCol">
+                    <img src="{%static 'images/key-skill-icon-1.svg'%}" alt="...">
+                  </div>
+                  <span class="ksText"> {{s.skill_name}} </span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-md">
+              <h4 class="smTitle pb-3">Coding Skills</h4>
+              <div class="progressCol">
+                <div class="progressCard">
+                  {% for s in skille %}
+                  <div class="progressCol">
+                    <span class="progressLbl"> {{s.skille_name }} </span>
+                    <div class="row g-2 align-items-center">
+                      <div class="col">
+                        <div class="progress progressStyle">
+                          <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <span class="pLbl">{{s.pourcentage_connaissance}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpaceSm lightBg">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col">
+              <h4 class="smText regular">Certificates</h4>
+            </div>
+            <div class="col-auto">
+              <a href="javascript:void(0)" class="simpleLink">View all</a>
+            </div>
+          </div>
+          <div class="sliderOuter">
+            <div class="swiper certificatesSlider">
+              <div class="swiper-wrapper">
+                {% for x in certificate %}
+                <div class="swiper-slide">
+                  <div class="cardStyle1">
+                    <h4 class="mdTitle cs1Title">
+                      <a href="javascript:void(0)"> {{ x.titre_blog }} </a>
+                    </h4>
+                    <ul class="cardOptionCol">
+                      <li> {{x.date}} </li>
+                      <li> {{x.site}} </li>
+                    </ul>
+                    <p> {{x.description_cerf}} </p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>            
+            <div class="cert-swiper-button-next swiper-button-next swiperBtnStyle"></div>
+            <div class="cert-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
+            <div class="swiper-pagination swiperPaginationStyle posInitial"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpace">
+        <div class="container">
+          <div class="portfolioCol">
+            <div class="row pb-3">
+              <div class="col">
+                <h4 class="smText regular">Featured Work</h4>
+              </div>
+              <div class="col-auto">
+                <a href="javascript:void(0)" class="simpleLink">View all</a>
+              </div>
+            </div>
+            {% for w in work %}
+            <div class="portfolioCard">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-auto">
+                  <div class="portfolioImgCol">
+                    <a href="javascript:void(0)"><img src="{{w.pic.url}}" alt="..."></a>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="portfolioContentCol">
+                    <h4 class="lgTitle"><a href="javascript:void(0)"> {{w.titre_work}} </a></h4>
+                    <ul class="portfolioOption">
+                      <li><span class="dateLbl"> {{ w.année }} </span></li>
+                    </ul>
+                    <p> {{w.description_work}} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpaceSm lightBg">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col">
+              <h4 class="smText regular">Recent posts</h4>
+            </div>
+            <div class="col-auto">
+              <a href="javascript:void(0)" class="simpleLink">View all</a>
+            </div>
+          </div>
+          <div class="row g-3">
+            {% for p in post %}
+            <div class="col-lg-6">
+              <div class="cardStyle1">
+                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)"> {{p.titre_post}} </a></h4>
+                <ul class="cardOptionCol">
+                  <li> {{p.date}} </li>
+                  <li> {{p.module}} </li>
+                </ul>
+                <p>{{p.description_post}}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+  </body>
+</html>
+{%endblock%}

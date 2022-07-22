@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">See my recent projects below</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="lightBg">
+        <div class="container">
+          <div class="portfolioContentMain">
+            <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
+              {% for w in work %}
+              <div class="col-md-6 pColMain">
+                <div class="pCol">
+                  <img src= "{{w.pic.url}}" alt="..." class="pImg">
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+  </body>
+</html>
+{%endblock %}

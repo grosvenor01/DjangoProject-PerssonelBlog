@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Did Coding - Home</title>
+    <meta name="author" content="Did Coding Limited & James Granger Design">
+    <link rel="canonical" href=""/>
+    <link rel="home" href=""/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link rel="shortcut icon" type="image/x-icon" href=" {%static 'images/icon.jpg'%}">
+    <link rel="apple-touch-icon" type="image/jpg" href="{%static 'images/icon.jpg'%}">
+
+    <!-- ================================
+    Start CSS
+    ================================= -->
+    <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.css">
+    <link href="{%static 'css/style.css'%}" rel="stylesheet">
+    
+    <!-- ================================
+    End CSS
+    ================================= -->
+
+  </head>
+  <body>
+{% include 'parts/nav.html' %}
+{% block content %}
+{% endblock %}
+{% include 'parts/scripts.html'%}
+{% include 'parts/footer.html' %}
